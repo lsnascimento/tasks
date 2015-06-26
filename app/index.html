@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" ng-app="TaskApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>Manager Tasks</title>
+
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
+    <link rel="stylesheet" href="bower_components/toastr/toastr.css" />
+    <!-- endbower -->
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/app.css"/>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+<body>
+
+    <div ng-view></div>
+
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/toastr/toastr.js"></script>
+    <script src="bower_components/angular-i18n/angular-locale_pt-br.js"></script>
+    <!-- endbower -->
+
+    <script src="scripts/app.js"></script>
+    <script src="scripts/route.js"></script>
+
+    <!-- Controllers -->
+    <script src="scripts/controllers/HomeController.js"></script>
+    <script src="scripts/controllers/TaskController.js"></script>
+
+    <!-- Directives -->
+    <script src="scripts/directives/header.js"></script>
+    <script src="scripts/directives/modalTask.js"></script>
+</body>
+</html>

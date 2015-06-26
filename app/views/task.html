@@ -1,0 +1,76 @@
+<tks-header></tks-header>
+
+<div class="container pdTop-container">
+    <!-- Form de Criação da Tarefa -->
+    <div class="col-md-12">
+        <div class="row">
+            <form name="taskForm" autocomplete="off" novalidate>
+                <legend>Nova Tarefa</legend>
+
+                <div class="form-group" ng-class="{'has-error' : taskForm.name.$error.required && taskForm.name.$dirty || taskForm.name.$error.minlength}">
+                    <label class="control-label">Nome</label>
+                    <input type="text" name="name" class="form-control" ng-model="iTask.name" ng-minlength="10" ng-required="true"/>
+                    <small class="help-block" ng-show="taskForm.name.$error.required && taskForm.name.$dirty">* Campo Obrigatório</small>
+                    <small class="help-block" ng-show="taskForm.name.$error.minlength && taskForm.name.$dirty">* Mínimo de 10 caracteres</small>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-primary" ng-disabled="taskForm.$invalid" ng-click="addTask()">Criar Tarefa</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Mensagem -->
+    <div class="col-md-12" ng-show="tasks.length === 0">
+        <div class="row">
+            <p class="text-danger">
+                <i class="fa fa-exclamation-triangle"></i>
+                Você não possui nenhum tarefa até o momento.
+            </p>
+        </div>
+    </div>
+
+    <!-- Lista de Tarefas -->
+    <div class="col-md-12" ng-show="tasks.length > 0">
+        <div class="row">
+            <h4>
+                <i class="fa fa-tasks"></i>
+                Tarefas do dia {{ dateNow | date : 'dd/MM/yyyy' }}
+            </h4>
+        </div>
+        <div class="row">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="text-center col-md-1">#</th>
+                        <th class="text-left col-md-10">Tarefa</th>
+                        <th class="text-center col-md-1">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="task in tasks">
+                        <td class="text-center">{{ $index + 1 }}</td>
+                        <td>{{ task.name }}</td>
+                        <td class="text-center">
+                            <div class="radio">
+                                <label>
+                                    <input
+                                            type="radio"
+                                            name="done"
+                                            data-toggle="modal"
+                                            data-target="#myModal"
+                                            ng-checked="task.done"
+                                            ng-click="setTaskDone(task)"
+                                            ng-disabled="disableRadioTasks[$index]"/>
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<tks-modal></tks-modal>
